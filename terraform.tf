@@ -11,7 +11,7 @@ terraform {
   }
 */
   #S3 bucket for environment "prod"
-
+  /*
   backend "s3" {
     bucket         = "bucket-web-prod-nginx-us-east-2"
     key            = "prod/terraform.tfstate"
@@ -19,7 +19,7 @@ terraform {
     encrypt        = true
     dynamodb_table = "table-web-prod-nginx-us-east-2"
   }
-
+*/
 
   required_providers {
     aws = {
