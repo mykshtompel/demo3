@@ -15,16 +15,15 @@ The repo contains the next components:
 * Presentation
 
 ## Folders and Files
-- /project - Terraform directory
-  - ./app - app directory
-  - ./config - configuration directory 
-  - ./modules - Terraform modules
-  - provider.tf
-  - terraform.tf
-  - variables.tf
-  - main.tf
-  - outputs.tf
-- presentation - Presentation of the project
+- ./presentation - presentation of the project
+- ./app - app directory
+- ./config - configuration directory 
+- ./modules - Terraform modules
+- provider.tf
+- terraform.tf
+- variables.tf
+- main.tf
+- outputs.tf
 
 ## Implemention
 ### Preparation
