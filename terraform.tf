@@ -3,23 +3,21 @@ terraform {
   /*
   #S3 bucket for environment "dev"
   backend "s3" {
-    bucket         = "bucket-web-dev-nginx-us-east-2"
-    key            = "dev/terraform.tfstate"
-    region         = "us-east-2"
-    encrypt        = true
-    dynamodb_table = "table-web-dev-nginx-us-east-2"
+    bucket  = "bucket-web-dev-nginx-us-east-2"
+    key     = "dev/terraform.tfstate"
+    region  = "us-east-2"
+    encrypt = true
   }
 */
   #S3 bucket for environment "prod"
-  /*
+
   backend "s3" {
-    bucket         = "bucket-web-prod-nginx-us-east-2"
-    key            = "prod/terraform.tfstate"
-    region         = "us-east-2"
-    encrypt        = true
-    dynamodb_table = "table-web-prod-nginx-us-east-2"
+    bucket  = "bucket-web-prod-nginx-us-east-2"
+    key     = "prod/terraform.tfstate"
+    region  = "us-east-2"
+    encrypt = true
   }
-*/
+
 
   required_providers {
     aws = {

@@ -4,7 +4,6 @@ aws_region  = "us-east-2"
 
 #Variables for module "s3_terraform_state"
 bucket_name = "bucket-web-prod-nginx-us-east-2"
-table_name  = "table-web-prod-nginx-us-east-2"
 
 #General variables for other modules
 env            = "prod"
