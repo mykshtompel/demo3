@@ -9,7 +9,7 @@ resource "aws_vpc" "vpc" {
   }
 }
 
-# Public subnets
+#Public subnets
 resource "aws_subnet" "public_subnet" {
   count      = local.number_public_subnets
   vpc_id     = aws_vpc.vpc.id
@@ -23,7 +23,7 @@ resource "aws_subnet" "public_subnet" {
   }
 }
 
-# Private subnets
+#Private subnets
 resource "aws_subnet" "private_subnet" {
   count      = local.number_private_subnets
   vpc_id     = aws_vpc.vpc.id
@@ -37,7 +37,7 @@ resource "aws_subnet" "private_subnet" {
   }
 }
 
-# Internet Gateway for public subnets
+#Internet Gateway for public subnets
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
 
@@ -46,7 +46,7 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
-# Elastic IP for private subnets
+#Elastic IP for private subnets
 resource "aws_eip" "elastic_ip_for_nat_gw" {
   count      = local.number_private_subnets
   vpc        = true
@@ -57,7 +57,7 @@ resource "aws_eip" "elastic_ip_for_nat_gw" {
   }
 }
 
-# NAT Gateway for private subnets
+#NAT Gateway for private subnets
 resource "aws_nat_gateway" "nat_gw" {
   count         = local.number_private_subnets
   allocation_id = aws_eip.elastic_ip_for_nat_gw[count.index].id
@@ -69,7 +69,7 @@ resource "aws_nat_gateway" "nat_gw" {
   }
 }
 
-# Route table for the public subnets
+#Route table for the public subnets
 resource "aws_route_table" "public_route_table" {
   vpc_id = aws_vpc.vpc.id
 
@@ -78,7 +78,7 @@ resource "aws_route_table" "public_route_table" {
   }
 }
 
-# Route table for the private subnets
+#Route table for the private subnets
 resource "aws_route_table" "private_route_table" {
   count  = local.number_private_subnets
   vpc_id = aws_vpc.vpc.id
@@ -88,7 +88,7 @@ resource "aws_route_table" "private_route_table" {
   }
 }
 
-# Route the public subnets traffic through the internet gateway
+#Route the public subnets traffic through the internet gateway
 resource "aws_route" "public_igw-route" {
   route_table_id         = aws_route_table.public_route_table.id
   gateway_id             = aws_internet_gateway.igw.id
@@ -96,7 +96,7 @@ resource "aws_route" "public_igw-route" {
 
 }
 
-# Route the private subnets traffic through the NAT gateway
+#Route the private subnets traffic through the NAT gateway
 resource "aws_route" "nat_gw_route" {
   count                  = local.number_private_subnets
   route_table_id         = aws_route_table.private_route_table[count.index].id
@@ -104,7 +104,7 @@ resource "aws_route" "nat_gw_route" {
   destination_cidr_block = "0.0.0.0/0"
 }
 
-# Associate the route tables to the public subnets
+#Associate the route tables to the public subnets
 resource "aws_route_table_association" "public_route_association" {
   count          = local.number_public_subnets
   route_table_id = aws_route_table.public_route_table.id

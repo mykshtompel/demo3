@@ -43,6 +43,11 @@ variable "health_check_path" {
 }
 
 #Variables for ECS
+variable "name_container" {
+  type    = string
+  default = "container"
+}
+
 variable "ecs_task_execution_role_name" {
   description = "ECS task execution role name"
   default     = "TaskExecutionRole"
@@ -70,11 +75,6 @@ variable "web_server_fargate_cpu" {
 variable "web_server_fargate_memory" {
   description = "Fargate instance memory to provision for web server (in MiB)"
   default     = 512
-}
-
-variable "name_container" {
-  type    = string
-  default = "container"
 }
 
 variable "aws_ecr_repository_url" {

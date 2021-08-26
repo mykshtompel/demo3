@@ -1,6 +1,3 @@
-# https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
-
-
 # CodeBuild IAM role (one per project)
 resource "aws_iam_role" "role" {
   name = "codebuild-role-${local.codebuild_project_name}"
@@ -21,14 +18,7 @@ resource "aws_iam_role" "role" {
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "ecs_full_access" {
-  role       = aws_iam_role.role.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonECS_FullAccess"
-}
-
-
-# CodeBuild IAM policy (one per project)
-# https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAM.ServiceLinkedRoles.html
+# CodeBuild IAM role policy (one per project)
 resource "aws_iam_role_policy" "role_policy" {
   role = aws_iam_role.role.name
   name = "codebuild-policy-${local.codebuild_project_name}"
@@ -175,4 +165,10 @@ resource "aws_iam_role_policy" "role_policy" {
   ]
 }
 POLICY
+}
+
+# CodeBuild IAM role policy attachment
+resource "aws_iam_role_policy_attachment" "ecs_full_access" {
+  role       = aws_iam_role.role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonECS_FullAccess"
 }

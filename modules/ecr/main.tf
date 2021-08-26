@@ -1,3 +1,4 @@
+#ECR repository
 resource "aws_ecr_repository" "main" {
   name                 = "${var.app}-${var.env}-${var.name_container}"
   image_tag_mutability = "MUTABLE"
@@ -7,6 +8,7 @@ resource "aws_ecr_repository" "main" {
   }
 }
 
+#ECR repository policy
 resource "aws_ecr_repository_policy" "main" {
   repository = aws_ecr_repository.main.name
   policy     = <<EOF
