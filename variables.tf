@@ -15,11 +15,6 @@ variable "bucket_name" {
   default = "bucket-app-env-container-us-east-2"
 }
 
-variable "table_name" {
-  type    = string
-  default = "table-app-env-container-us-east-2"
-}
-
 #General variables for other modules
 variable "app" {
   type    = string

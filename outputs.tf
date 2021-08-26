@@ -7,10 +7,6 @@ output "s3_bucket_name" {
   value = module.s3_terraform_state.s3_bucket_name
 }
 
-output "dynamodb_table_name" {
-  value = module.s3_terraform_state.dynamodb_table_name
-}
-
 #Outputs for module "elastic_container_registry"
 output "aws_ecr_repository_url" {
   value = module.elastic_container_registry.aws_ecr_repository_url

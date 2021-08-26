@@ -1,7 +1,6 @@
 module "s3_terraform_state" {
   source      = "./modules/s3"
   bucket_name = var.bucket_name
-  table_name  = var.table_name
 }
 
 module "elastic_container_registry" {
