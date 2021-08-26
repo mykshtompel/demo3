@@ -44,14 +44,14 @@ aws_secret_access_key = YOUR AWS SECRET ACCESS KEY
 #### Steps for environment "dev"
 - Copy terraform project to your github repo to branch "dev"
   
-- Go to the /project directory and run:
+- Go to the /terraform_project directory and run:
 
 terraform init  
 terraform apply -target=module.s3_terraform_state --var-file=./config/dev.tfvars  
 
 - Uncomment backend "s3" for dev in terraform.tf
 
-- Go to the /project directory and run (use your secret.tfvars):
+- Go to the /terraform_project directory and run (use your secret.tfvars):
 
 terraform init  
 terraform apply -target=module.elastic_container_registry --var-file=./config/dev.tfvars  
@@ -76,14 +76,14 @@ terraform apply -target=module.codebuild --var-file=./config/dev.tfvars --var-fi
 
 - Comment backend "s3" for dev in terraform.tf
 
-- Go to the /project directory and run:
+- Go to the /terraform_project directory and run:
 
 terraform init  
 terraform apply -target=module.s3_terraform_state --var-file=./config/prod.tfvars  
 
 - Uncomment backend "s3" for prod in terraform.tf
 
-- Go to the /project directory and run (use your secret.tfvars):
+- Go to the /terraform_project directory and run (use your secret.tfvars):
 
 terraform init  
 terraform apply -target=module.elastic_container_registry --var-file=./config/prod.tfvars  
