@@ -1,6 +1,6 @@
 #CloudWatch log group
 resource "aws_cloudwatch_log_group" "web_server_log_group" {
-  name              = "/ecs/web-server"
+  name              = "/ecs/web-server/${var.app}-${var.env}-${var.name_container}"
   retention_in_days = 30
 
   tags = {
