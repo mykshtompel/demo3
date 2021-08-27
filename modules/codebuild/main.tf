@@ -33,10 +33,10 @@ resource "aws_codebuild_project" "project" {
     privileged_mode = true
 
     environment_variable {
-        "name"  = "ENV"
-        "value" = "${env}"
-      }
-    
+      name  = "ENV"
+      value = env
+    }
+
   }
 
   source {
