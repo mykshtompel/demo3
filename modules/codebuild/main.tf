@@ -32,10 +32,16 @@ resource "aws_codebuild_project" "project" {
     type            = "LINUX_CONTAINER"
     privileged_mode = true
 
-    environment_variable {
-      name  = "CI"
-      value = "true"
-    }
+    environment_variable {[
+          {
+            "name"  = "CI"
+            "value" = "true"
+          },
+          {
+            "name"  = "ENV"
+            "value" = "${env}"
+          },
+    ]
   }
 
   source {
