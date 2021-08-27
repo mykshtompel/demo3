@@ -34,7 +34,7 @@ resource "aws_codebuild_project" "project" {
 
     environment_variable {
       name  = "ENV"
-      value = env
+      value = var.env
     }
 
   }
