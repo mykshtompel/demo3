@@ -9,8 +9,9 @@ terraform {
     encrypt = true
   }
 
-  #S3 bucket for environment "prod"
   /*
+  #S3 bucket for environment "prod"
+
   backend "s3" {
     bucket  = "bucket-web-prod-nginx-us-east-2"
     key     = "prod/terraform.tfstate"

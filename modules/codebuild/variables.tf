@@ -63,10 +63,7 @@ variable "git_trigger_event" {
   default = ""
 }
 
-
-
-/*
-variable "env_vars" {
+variable "environment_variable" {
   description = <<EOF
 Pass env vars for codebuild project(in native for codebuild project format)
 Example:
@@ -84,4 +81,3 @@ EOF
 
   default = []
 }
-*/
